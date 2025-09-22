@@ -95,8 +95,20 @@ public class NumberTriangle {
      *
      */
     public int retrieve(String path) {
-        // TODO implement this method
-        return -1;
+        if (path.isEmpty()) {
+            return this.getRoot();
+        } else {
+            NumberTriangle current = this;
+            for (int i = 0; i < path.length(); i++) {
+                char direction = path.charAt(i);
+                if (direction == 'l') {
+                    current = current.left;
+                } else if (direction == 'r') {
+                    current = current.right;
+                }
+            }
+            return current.getRoot();
+        }
     }
 
     /** Read in the NumberTriangle structure from a file.
@@ -154,7 +166,7 @@ public class NumberTriangle {
     public static void main(String[] args) throws IOException {
 
         NumberTriangle mt = NumberTriangle.loadTriangle("input_tree.txt");
-        System.out.println(mt.getRoot());
+        System.out.println(mt.retrieve("rrrrrrrrrrrrrr"));
         // [not for credit]
         // you can implement NumberTriangle's maxPathSum method if you want to try to solve
         // Problem 18 from project Euler [not for credit]
