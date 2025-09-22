@@ -95,7 +95,6 @@ public class NumberTriangle {
      *
      */
     public int retrieve(String path) {
-        // TODO implement this method
         if (path.isEmpty()) {
             return this.getRoot();
         } else {
